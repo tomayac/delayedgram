@@ -105,6 +105,7 @@ import loadGrayscale from './grayscale.js';
         return;
       }
     }
+    captureButton.classList.add('busy');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -119,6 +120,7 @@ import loadGrayscale from './grayscale.js';
     }, '');
 
     const ppmP3String = ppmData + ppmBody;
-    applyFilters(ppmP3String);
+    await applyFilters(ppmP3String);
+    captureButton.classList.remove('busy');
   });
 })();
