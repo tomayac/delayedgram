@@ -22,6 +22,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: "/delayedgram/",
   build: {
     assetsInlineLimit: 0,
     outDir: "docs",
