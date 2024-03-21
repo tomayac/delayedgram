@@ -5,8 +5,6 @@
 
 using namespace std;
 
-// magick INPUT.JPG -compress none OUTPUT.PPM
-
 // Function to invert the colors of the image
 void invertColors(const string &inputFileName, const string &outputFileName) {
     ifstream inputFile(inputFileName);
@@ -58,7 +56,6 @@ void invertColors(const string &inputFileName, const string &outputFileName) {
 
     inputFile.close();
     outputFile.close();
-    cout << "Image inversion completed." << endl;
 }
 
 int main(int argc, char* argv[]) {

@@ -54,7 +54,6 @@ void convertToGrayscale(const string &inputFileName, const string &outputFileNam
 
     inputFile.close();
     outputFile.close();
-    cout << "Conversion to grayscale completed." << endl;
 }
 
 int main(int argc, char* argv[]) {

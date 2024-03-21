@@ -4,26 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Delayedgram</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="delayedgram.png" />
+    <link rel="icon" href="/assets/delayedgram-DYzY0C4o.png" />
     <link
       rel="preload"
-      href="invert.wasm"
+      href="/assets/invert-BC5JnEJu.wasm"
       as="fetch"
       type="application/wasm"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="grayscale.wasm"
+      href="/assets/grayscale-DF3d0hvO.wasm"
       as="fetch"
       type="application/wasm"
       crossorigin="anonymous"
     />
-    <link rel="modulepreload" href="worker.js" />
-    <link rel="modulepreload" href="invert.js" />
-    <link rel="modulepreload" href="grayscale.js" />
-  </head>
+    <link rel="modulepreload" href="/assets/worker-DihIdPKt.js" />
+    <link rel="modulepreload" href="/assets/invert-C9qkFDMB.js" />
+    <link rel="modulepreload" href="/assets/grayscale-e2hnTTeD.js" />
+    <script type="module" crossorigin src="/assets/index-C4bDLsAq.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B27PaEL2.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
   <body>
     <div class="wrapper">
       <h1>
@@ -31,7 +32,7 @@
           class="logo"
           width="706"
           height="706"
-          src="delayedgram.png"
+          src="/assets/delayedgram-DYzY0C4o.png"
           alt=""
         />
         Delayedgram
@@ -42,6 +43,5 @@
     </div>
     <canvas id="canvas" style="display: none"></canvas>
 
-    <script src="script.js" type="module"></script>
   </body>
 </html>

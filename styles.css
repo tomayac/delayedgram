@@ -2,18 +2,21 @@
   font-family: system-ui, sans-serif;
   color-scheme: dark light;
 }
+
 .logo {
   vertical-align: text-bottom;
   display: inline;
   width: 40px;
   height: 40px;
 }
+
 .wrapper {
   display: flex;
   gap: 1rem;
   flex-direction: column;
   align-items: center;
 }
+
 #photos {
   margin-block-start: 1rem;
   display: flex;
@@ -21,12 +24,14 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
 video {
   display: block;
   width: 640px;
   height: 480px;
   background-color: darkgray;
 }
+
 button {
   display: block;
   width: 50px;
@@ -40,19 +45,35 @@ button {
   cursor: pointer;
   z-index: 1;
 }
+
 button:hover {
   outline-offset: 4px;
 }
+
 button:active {
   outline-offset: 3px;
 }
+
 button.busy {
-  background: linear-gradient(rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%)
-  0 0/100% 200%;
+  background: linear-gradient(
+      rgb(255 0 0 / 100%) 0%,
+      rgb(255 154 0 / 100%) 10%,
+      rgb(208 222 33 / 100%) 20%,
+      rgb(79 220 74 / 100%) 30%,
+      rgb(63 218 216 / 100%) 40%,
+      rgb(47 201 226 / 100%) 50%,
+      rgb(28 127 238 / 100%) 60%,
+      rgb(95 21 242 / 100%) 70%,
+      rgb(186 12 248 / 100%) 80%,
+      rgb(251 7 217 / 100%) 90%,
+      rgb(255 0 0 / 100%) 100%
+    )
+    0 0/100% 200%;
   animation: rainbow 2s linear infinite;
 }
 
 @keyframes rainbow {
- to {background-position:0 -200%}
+  to {
+    background-position: 0 -200%;
+  }
 }
-
