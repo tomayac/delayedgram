@@ -97,7 +97,9 @@ captureButton.addEventListener("click", async () => {
     worker = null;
   }
 
-  worker = new Worker("worker.js", { type: "module" });
+  worker = new Worker(new URL("./worker.js", import.meta.url), {
+    type: "module",
+  });
   worker.addEventListener("message", (event) => {
     const { ppmP3String, complete } = event.data;
     if (complete) {
