@@ -99,9 +99,9 @@ captureButton.addEventListener("click", async () => {
 
   worker = new Worker("worker.js", { type: "module" });
   worker.addEventListener("message", (event) => {
-    captureButton.classList.remove("busy");
     const { ppmP3String, complete } = event.data;
     if (complete) {
+      captureButton.classList.remove("busy");
       worker.terminate();
       worker = null;
     }

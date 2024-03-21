@@ -3,26 +3,27 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="dark light" />
     <title>Delayedgram</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="delayedgram.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/delayedgram.png" />
     <link
       rel="preload"
-      href="invert.wasm"
+      href="/invert.wasm"
       as="fetch"
       type="application/wasm"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="grayscale.wasm"
+      href="/grayscale.wasm"
       as="fetch"
       type="application/wasm"
       crossorigin="anonymous"
     />
-    <link rel="modulepreload" href="worker.js" />
-    <link rel="modulepreload" href="invert.js" />
-    <link rel="modulepreload" href="grayscale.js" />
+    <link rel="modulepreload" href="/worker.js" />
+    <link rel="modulepreload" href="/invert.js" />
+    <link rel="modulepreload" href="/grayscale.js" />
   </head>
   <body>
     <div class="wrapper">
@@ -31,7 +32,7 @@
           class="logo"
           width="706"
           height="706"
-          src="delayedgram.png"
+          src="/delayedgram.png"
           alt=""
         />
         Delayedgram
@@ -42,6 +43,6 @@
     </div>
     <canvas id="canvas" style="display: none"></canvas>
 
-    <script src="script.js" type="module"></script>
+    <script src="/script.js" type="module"></script>
   </body>
 </html>

@@ -1,1 +1,1 @@
-{"name":"delayedgram","short_name":"delayedgram","start_url":"/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/"}
+{"name":"Delayedgram","short_name":"Delayedgram","start_url":"./","display":"standalone","background_color":"#000","lang":"en","scope":"./","id":"./","theme_color":"#000","icons":[{"src":"delayedgram.png","sizes":"706x706","type":"image/png","purpose":"maskable"},{"src":"delayedgram.png","sizes":"706x706","type":"image/png","purpose":"any"}]}

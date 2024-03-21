@@ -10,14 +10,24 @@ const FILTERS = ["invert", "grayscale"];
     });
     const inputFileName = "input.ppm";
     const buffer = await file.arrayBuffer();
-    const InvertFilter = await loadInvert();
-    const GrayscaleFilter = await loadGrayscale();
+    const [GrayscaleFilter, InvertFilter] = await Promise.all([
+      loadGrayscale(),
+      loadInvert(),
+    ]);
     InvertFilter.FS.writeFile(inputFileName, new Uint8Array(buffer));
     GrayscaleFilter.FS.writeFile(inputFileName, new Uint8Array(buffer));
     const outputFileName = `${Math.random().toString().substr(2)}.ppm`;
-    InvertFilter.callMain([inputFileName, `invert-${outputFileName}`]);
-    GrayscaleFilter.callMain([inputFileName, `grayscale-${outputFileName}`]);
-
+    await Promise.all([
+      Promise.resolve(
+        InvertFilter.callMain([inputFileName, `invert-${outputFileName}`]),
+      ),
+      Promise.resolve(
+        GrayscaleFilter.callMain([
+          inputFileName,
+          `grayscale-${outputFileName}`,
+        ]),
+      ),
+    ]);
     FILTERS.forEach(async (filter, i) => {
       const output = (
         filter === "invert" ? InvertFilter : GrayscaleFilter

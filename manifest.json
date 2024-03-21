@@ -1,1 +1,24 @@
-{}
+{
+  "name": "Delayedgram",
+  "short_name": "Delayedgram",
+  "start_url": "./",
+  "id": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "icons": [
+    {
+      "src": "delayedgram.png",
+      "sizes": "706x706",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "delayedgram.png",
+      "sizes": "706x706",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
