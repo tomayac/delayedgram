@@ -13,8 +13,8 @@
     "lint:js": "npx eslint . --ext .js,.mjs --fix --ignore-pattern docs/ --ignore-pattern third-party/ --ignore-pattern dev-dist/ && npx find-unused-exports",
     "lint:css": "npx stylelint \"**/*.css\" --fix",
     "lint": "npm run lint:js && npm run lint:css",
-    "wasm-grayscale": "emcc -Oz grayscale.cpp -o grayscale.js -sENVIRONMENT=web,worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
-    "wasm-invert": "emcc -Oz invert.cpp -o invert.js -sENVIRONMENT=web,worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
+    "wasm-grayscale": "emcc -Oz grayscale.cpp -o grayscale.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
+    "wasm-invert": "emcc -Oz invert.cpp -o invert.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
     "wasm": "npm run wasm-grayscale && npm run wasm-invert"
   },
   "type": "module",

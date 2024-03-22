@@ -26,10 +26,15 @@
 }
 
 video {
+  transform: scaleX(-1);
   display: block;
   width: 640px;
   height: 480px;
   background-color: darkgray;
+}
+
+canvas {
+  transform: scaleX(-1);
 }
 
 button {
