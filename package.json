@@ -10,33 +10,32 @@
     "build": "npm run fix && npm run wasm && vite build && touch docs/.nojekyll && git add docs/ -f",
     "deploy": "npm run lint && npm run build && git add . && git commit -a && git push",
     "fix": "npx prettier --write .",
-    "lint:js": "npx eslint . --ext .js,.mjs --fix --ignore-pattern docs/ --ignore-pattern third-party/ --ignore-pattern dev-dist/ && npx find-unused-exports",
+    "lint:js": "npx eslint . --ext .js,.mjs --fix --ignore-pattern docs/ --ignore-pattern third-party/ --ignore-pattern dev-dist/",
     "lint:css": "npx stylelint \"**/*.css\" --fix",
     "lint": "npm run lint:js && npm run lint:css",
-    "wasm-grayscale": "emcc -Oz grayscale.cpp -o grayscale.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
-    "wasm-invert": "emcc -Oz invert.cpp -o invert.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
+    "wasm-grayscale": "emcc -Oz grayscale.cpp -o filter-grayscale.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
+    "wasm-invert": "emcc -Oz invert.cpp -o filter-invert.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
     "wasm": "npm run wasm-grayscale && npm run wasm-invert"
   },
   "type": "module",
   "author": "Thomas Steiner (tomac@google.com)",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@rollup/plugin-dynamic-import-vars": "^2.1.2",
     "eslint": "^8.57.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
-    "find-unused-exports": "^5.0.0",
     "prettier": "^3.2.5",
-    "stylelint": "^16.2.1",
+    "stylelint": "^16.3.0",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-order": "^6.0.4",
-    "vite": "^5.2.2",
-    "vite-plugin-pwa": "^0.19.5"
+    "vite": "^5.2.6",
+    "vite-plugin-pwa": "^0.19.7"
   },
   "eslintConfig": {
     "ignorePatterns": [
       "docs/",
-      "invert.js",
-      "grayscale.js"
+      "filter-*.js"
     ],
     "parserOptions": {
       "ecmaVersion": 2020,

@@ -6,25 +6,22 @@
     <meta name="color-scheme" content="dark light" />
     <title>Delayedgram</title>
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="preload" href="/script.js" as="script" />
-    <link rel="modulepreload" href="/invert-worker.js" />
-    <link rel="modulepreload" href="/grayscale-worker.js" />
+    <link rel="preload" href="/script.js" as="script" crossorigin="anonymous" />
+    <link rel="modulepreload" href="/filter-worker.js" />
     <link
       rel="preload"
-      href="/invert.wasm"
+      href="/filter-invert.wasm"
       as="fetch"
-      type="application/wasm"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="/grayscale.wasm"
+      href="/filter-grayscale.wasm"
       as="fetch"
-      type="application/wasm"
       crossorigin="anonymous"
     />
-    <link rel="modulepreload" href="/invert.js" />
-    <link rel="modulepreload" href="/grayscale.js" />
+    <link rel="modulepreload" href="/filter-invert.js" />
+    <link rel="modulepreload" href="/filter-grayscale.js" />
     <link
       rel="preload"
       href="/delayedgram.png"

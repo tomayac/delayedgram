@@ -7,8 +7,11 @@ const ctx = canvas.getContext('2d', {
 });
 
 let streaming = false;
-let invertWorker = null;
-let grayscaleWorker = null;
+
+const workers = {
+  invert: null,
+  grayscale: null,
+};
 
 const drawPPMP3Image = async (ppmP3String, filter) => {
   performance.mark('draw-start');
@@ -105,63 +108,35 @@ captureButton.addEventListener('click', async () => {
   performance.measure('Prepare webcam image', 'ppm-start', 'ppm-end');
 
   let complete = 0;
-
-  if (invertWorker) {
-    invertWorker.terminate();
-    invertWorker = null;
-  }
-
-  if (grayscaleWorker) {
-    grayscaleWorker.terminate();
-    grayscaleWorker = null;
-  }
-
-  invertWorker = new Worker(new URL('./invert-worker.js', import.meta.url), {
-    type: 'module',
-  });
-
-  grayscaleWorker = new Worker(
-    new URL('./grayscale-worker.js', import.meta.url),
-    {
-      type: 'module',
-    },
-  );
-
-  invertWorker.addEventListener('message', async (event) => {
-    complete += 1;
-    const { ppmP3String } = event.data;
-    await drawPPMP3Image(ppmP3String, 'invert');
-    if (complete === 2) {
-      performance.mark('filters-end');
-      performance.measure('Apply filters', 'filters-start', 'filters-end');
-      complete = 0;
-      captureButton.classList.remove('busy');
-      performance.getEntriesByType('measure').forEach((measure) => {
-        console.log(measure.name, measure.duration.toFixed(0));
-      });
-    }
-    invertWorker.terminate();
-    invertWorker = null;
-  });
-
-  grayscaleWorker.addEventListener('message', async (event) => {
-    complete += 1;
-    const { ppmP3String } = event.data;
-    await drawPPMP3Image(ppmP3String, 'grayscale');
-    if (complete === 2) {
-      performance.mark('filters-end');
-      performance.measure('Apply filters', 'filters-start', 'filters-end');
-      complete = 0;
-      captureButton.classList.remove('busy');
-      performance.getEntriesByType('measure').forEach((measure) => {
-        console.log(measure.name, measure.duration.toFixed(0));
-      });
-    }
-    grayscaleWorker.terminate();
-    grayscaleWorker = null;
-  });
-
   performance.mark('filters-start');
-  invertWorker.postMessage({ ppmP3String });
-  grayscaleWorker.postMessage({ ppmP3String });
+
+  for (const [filter, worker] of Object.entries(workers)) {
+    if (worker) {
+      worker.terminate();
+      workers[filter] = null;
+    }
+    workers[filter] = new Worker(
+      new URL('./filter-worker.js', import.meta.url),
+      {
+        type: 'module',
+      },
+    );
+    workers[filter].addEventListener('message', async (event) => {
+      complete += 1;
+      const { ppmP3String } = event.data;
+      await drawPPMP3Image(ppmP3String, 'invert');
+      if (complete === 2) {
+        performance.mark('filters-end');
+        performance.measure('Apply filters', 'filters-start', 'filters-end');
+        complete = 0;
+        captureButton.classList.remove('busy');
+        performance.getEntriesByType('measure').forEach((measure) => {
+          console.log(measure.name, measure.duration.toFixed(0));
+        });
+      }
+      workers[filter].terminate();
+      workers[filter] = null;
+    });
+    workers[filter].postMessage({ ppmP3String, filter });
+  }
 });

@@ -4,11 +4,15 @@
 
 import { defineConfig } from 'vite';
 import { VitePWA as vitePWA } from 'vite-plugin-pwa';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import webmanifest from './manifest.json';
 
 // ignore unused exports default
 export default defineConfig({
   plugins: [
+    dynamicImportVars({
+      include: ['./filter-*.js'],
+    }),
     vitePWA({
       devOptions: {
         enabled: true,
