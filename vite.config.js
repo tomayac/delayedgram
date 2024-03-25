@@ -31,6 +31,7 @@ export default defineConfig({
     assetsInlineLimit: 0,
     outDir: 'docs',
     target: 'esnext',
+    minify: 'esbuild',
   },
   worker: {
     format: 'es',
