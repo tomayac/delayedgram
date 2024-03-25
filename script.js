@@ -43,7 +43,11 @@ async function setupCamera() {
   return new Promise(async (resolve, reject) => {
     try {
       const constraints = {
-        video: { facingMode: 'user' },
+        video: {
+          facingMode: 'user',
+          width: { ideal: 640 },
+          height: { ideal: 480 },
+        },
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       video.addEventListener('canplay', () => {

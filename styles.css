@@ -23,6 +23,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 100%;
 }
 
 video {
@@ -35,6 +36,13 @@ video {
 
 canvas {
   transform: scaleX(-1);
+}
+
+video,
+canvas {
+  aspect-ratio: 640 / 480;
+  max-width: 100%;
+  height: auto;
 }
 
 button {
