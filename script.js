@@ -45,11 +45,12 @@ const drawPPMP3Image = async (ppmP3String, filter) => {
 async function setupCamera() {
   return new Promise(async (resolve, reject) => {
     try {
+      const isPortrait = screen.orientation.type.startsWith('portrait');
       const constraints = {
         video: {
           facingMode: 'user',
-          width: { ideal: 640 },
-          height: { ideal: 480 },
+          width: { ideal: isPortrait ? 480 : 640 },
+          height: { ideal: isPortrait ? 640 : 480 },
         },
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
