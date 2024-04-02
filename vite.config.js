@@ -11,7 +11,7 @@ import webmanifest from './manifest.json';
 export default defineConfig({
   plugins: [
     dynamicImportVars({
-      include: ['./filter-*.js'],
+      include: ['./filter-*.mjs'],
     }),
     vitePWA({
       devOptions: {

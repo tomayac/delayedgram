@@ -4,7 +4,7 @@
   const OUTPUT_NAME = 'output.ppm';
 
   const applyFilter = async (ppmP3String, filter) => {
-    const WasmFilter = await (await import(`./filter-${filter}.js`)).default();
+    const WasmFilter = await (await import(`./filter-${filter}.mjs`)).default();
     const buffer = await new File([ppmP3String], INPUT_NAME, {
       type: MIME_TYPE,
     }).arrayBuffer();

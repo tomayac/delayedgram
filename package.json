@@ -13,8 +13,8 @@
     "lint:js": "npx eslint . --ext .js,.mjs --fix --ignore-pattern docs/ --ignore-pattern third-party/ --ignore-pattern dev-dist/",
     "lint:css": "npx stylelint \"**/*.css\" --fix",
     "lint": "npm run lint:js && npm run lint:css",
-    "wasm-grayscale": "emcc -Oz grayscale.cpp -o filter-grayscale.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
-    "wasm-invert": "emcc -Oz invert.cpp -o filter-invert.js -sENVIRONMENT=worker -sFILESYSTEM=1 -sEXPORTED_RUNTIME_METHODS=FS,callMain -sMODULARIZE=1 -sEXPORT_ES6 -sINVOKE_RUN=0",
+    "wasm-grayscale": "emcc -Oz grayscale.cpp -o filter-grayscale.mjs -sENVIRONMENT=worker -sFILESYSTEM -sEXPORTED_RUNTIME_METHODS=FS,callMain -sINVOKE_RUN=0",
+    "wasm-invert": "emcc -Oz invert.cpp -o filter-invert.mjs -sENVIRONMENT=worker -sFILESYSTEM -sEXPORTED_RUNTIME_METHODS=FS,callMain -sINVOKE_RUN=0",
     "wasm": "npm run wasm-grayscale && npm run wasm-invert"
   },
   "type": "module",
@@ -26,16 +26,16 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
-    "stylelint": "^16.3.0",
+    "stylelint": "^16.3.1",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-order": "^6.0.4",
-    "vite": "^5.2.6",
+    "vite": "^5.2.7",
     "vite-plugin-pwa": "^0.19.7"
   },
   "eslintConfig": {
     "ignorePatterns": [
       "docs/",
-      "filter-*.js"
+      "filter-*.mjs"
     ],
     "parserOptions": {
       "ecmaVersion": 2020,
